@@ -118,7 +118,7 @@ ExploitOffsets init_offsets_iPhone81_11_3_1() {
     offsets.copyin = 0xfffffff0071a7090;
     offsets.copyout = 0xfffffff0071a72b4;
     offsets.kernel_task = 0xfffffff0075d5048;
-    offsets.kernel_map = 0xfffffff0075d5050;
+    offsets.kernel_map = 0xFFFFFFF0075D5030;
     offsets.allproc = 0xFFFFFFF00777FC68;
     offsets.kernproc = 0xfffffff0075d50a0;
     offsets.AGXCommandQueue_vtable = 0xfffffff006ffa3d0;
@@ -265,9 +265,6 @@ void init_offsets() {
     printf("- kernproc: %#llx\n", offsets.kernproc);
     printf("- kernel_map: %#llx\n", offsets.kernel_map);
     printf(" \n");
-    if(offsets.kernel_map == 0) {
-        printf("We wont be able to leak aslr because an invalid offset for kernel_map.\n");
-    }
     if(offsets.AGXCommandQueue_vtable == 0) {
         printf("We wont be able to leak aslr because an invalid offset for AGXCommandQueue_vtable.\n");
     }

