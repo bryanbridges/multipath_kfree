@@ -166,7 +166,21 @@ ExploitOffsets init_offsets_iPhone93_11_3_1() {
     ExploitOffsets offsets = {};
     return  offsets;
 }
-
+//iPhone9,4 GSM iPhone 7+ kernel offsets found by @LavarBridges
+ExploitOffsets init_offsets_iPhone94_11_3_1() {
+    ExploitOffsets offsets = {0};
+    offsets.metaclass = 0xfffffff00750eb04;
+    offsets.rootvnode = 0xfffffff007621088;
+    offsets.copyin = 0xfffffff0071f0534;
+    offsets.copyout = 0xfffffff0071f075c;
+    offsets.kernel_task = 0xfffffff007621050;
+    offsets.kernel_map = 0xfffffff007621050;
+    offsets.allproc = 0xFFFFFFF00777FC68;
+    offsets.kernproc = 0xfffffff0075d50a0;
+    offsets.AGXCommandQueue_vtable = 0xfffffff006ea9800;
+    offsets.osserializer_serialize = 0xfffffff007525abc;
+    return offsets;
+}
 //iPhone X 15E302
 ExploitOffsets init_offsets_iPhone103_11_3_1() {
     ExploitOffsets offsets = {};
@@ -245,7 +259,8 @@ void init_offsets() {
         
         else if(strcmp(u.machine, "iPhone8,4") == 0) {
             offsets = init_offsets_iPhone84_11_3_1();
-            
+        else if(strcmp(u.machine, "iPHone9,4") == 0) {
+            offsets = init_offsets_iPhone94_11_3_1();
         } else {
             printf("Your device isn't supported yet, find your offsets and add them to offsets.m in the project.\n");
             return;
