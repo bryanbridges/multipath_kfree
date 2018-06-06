@@ -17,12 +17,12 @@
 
 void jb_go(void)
 {
-    int poc = BEER; //change this to MULTIPATH if you want the other exploit
+    int poc = MULTIPATH; //change this to MULTIPATH if you want the other exploit
     
     printf("Stage 1: Exploiting the kernel.\n");
     init_offsets();
     
-    if(BEER) {
+    if(poc == BEER) {
         
         brewbeer();
     

