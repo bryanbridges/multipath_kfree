@@ -166,6 +166,25 @@ ExploitOffsets init_offsets_iPhone93_11_3_1() {
     ExploitOffsets offsets = {};
     return  offsets;
 }
+//iPhone 7+ 15302
+ExploitOffsets init_offsets_iPhone94_11_3_1() {
+    ExploitOffsets offsets = {0};
+    offsets.metaclass = 0xfffffff00750eb04
+    offsets.rootvnode = 0xfffffff007621088;
+    offsets.copyin = 0xfffffff0071f0534;
+    offsets.copyout = 0xfffffff0071f075c;
+    offsets.kernel_task = 0xfffffff006e00550;
+    offsets.kernel_map = 0xfffffff007621050;
+    offsets.allproc = 0xfffffff00768b390;
+    offsets.kernproc = 0xfffffff0075d50a0;
+    offsets.AGXCommandQueue_vtable = 0xfffffff006ea9800;
+    offsets.kernproc = 0xfffffff005c69e4d;
+    offsets.realhost = 0xfffffff007626bf8;
+    offsets.uuid_copy = 0xfffffff007530b84;
+    offsets.call5 = 0xfffffff00614dea0;
+    offsets.osserializer_serialize = 0xfffffff007525abc
+    return offsets;
+}
 
 //iPhone X 15E302
 ExploitOffsets init_offsets_iPhone103_11_3_1() {
@@ -227,6 +246,10 @@ void init_offsets() {
     
     if (strcmp(build_id, "15E302") == 0) {
         
+        /*iPhone 7+ GSM
+        else if(strcmp(u.machine, "iPhone9,4") == 0) {
+             offsets = init_offsets_iPhone94_11_3_1();
+        }
         /*
         //iPhone 6 Global
         if(strcmp(u.machine, "iPhone7,1") == 0) {
